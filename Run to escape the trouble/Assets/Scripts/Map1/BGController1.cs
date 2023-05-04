@@ -16,16 +16,19 @@ public class BGController1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BG.transform.position.x <= -0.02369976 && once == 0)
+        if (GameController.GameOver == false && GameController.GamePause == false)
         {
-            once = 1;
-            BGIns.Ins = true;
-        }
-        if (BG.transform.position.x < -22.45)
-        {
-            Destroy(gameObject);
-        }
+            if (BG.transform.position.x <= -0.02369976 && once == 0)
+            {
+                once = 1;
+                BGIns.Ins = true;
+            }
+            if (BG.transform.position.x < -22.45)
+            {
+                Destroy(gameObject);
+            }
 
-        BG.transform.position = new Vector2(transform.position.x - Time.deltaTime, transform.position.y);
+            BG.transform.position = new Vector2(transform.position.x - Time.deltaTime, transform.position.y);
+        }
     }
 }

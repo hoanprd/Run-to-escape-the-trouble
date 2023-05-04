@@ -15,11 +15,14 @@ public class BGController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BG.transform.position.x < -22.45)
+        if (GameController.GameOver == false && GameController.GamePause == false)
         {
-            Destroy(gameObject);
-        }
+            if (BG.transform.position.x < -22.45)
+            {
+                Destroy(gameObject);
+            }
 
-        BG.transform.position = new Vector2(transform.position.x - Time.deltaTime, transform.position.y);
+            BG.transform.position = new Vector2(transform.position.x - Time.deltaTime, transform.position.y);
+        }
     }
 }

@@ -25,30 +25,14 @@ public class PlayerCat1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsGrounded() && !IsJump)
+        if (IsGrounded() && !IsJump && GameController.GameOver == false && GameController.GamePause == false)
         {
             DoubleJump = false;
         }
 
-        if (IsJump && !IsSlide)
+        if (IsJump && !IsSlide && GameController.GameOver == false && GameController.GamePause == false)
         {
             IsJump = false;
-
-            /*if (IsGrounded() || !DoubleJump)
-            {
-                if (IsGrounded())
-                {
-                    AniCat1.SetTrigger("cat1jump1");
-                }
-                else
-                {
-                    AniCat1.SetTrigger("cat1jump2");
-                }
-
-                rb.velocity = new Vector2(0, JumpingPower);
-
-                DoubleJump = !DoubleJump;
-            }*/
 
             if (IsGrounded())
             {
@@ -66,7 +50,7 @@ public class PlayerCat1 : MonoBehaviour
             }
         }
 
-        if (IsSlide && IsGrounded())
+        if (IsSlide && IsGrounded() && GameController.GameOver == false && GameController.GamePause == false)
         {
             AniCat1.applyRootMotion = false;
             if (once == 0)
@@ -75,11 +59,17 @@ public class PlayerCat1 : MonoBehaviour
                 AniCat1.SetBool("cat1slide", true);
             }
         }
-        else
+        else if (GameController.GameOver == false && GameController.GamePause == false)
         {
             AniCat1.applyRootMotion = true;
             once = 0;
             AniCat1.SetBool("cat1slide", false);
+        }
+
+        if (GameController.GameOver == true && GameController.GamePause == false)
+        {
+            AniCat1.applyRootMotion = false;
+            AniCat1.SetBool("cat1die", true);
         }
     }
 

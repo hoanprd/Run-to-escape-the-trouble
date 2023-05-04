@@ -16,13 +16,16 @@ public class RunwayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DestroyTime -= Time.deltaTime;
-
-        if (DestroyTime <= 0)
+        if (GameController.GameOver == false && GameController.GamePause == false)
         {
-            Destroy(gameObject);
-        }
+            DestroyTime -= Time.deltaTime;
 
-        RunWay.transform.position = new Vector2(transform.position.x - Speed, transform.position.y);
+            if (DestroyTime <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            RunWay.transform.position = new Vector2(transform.position.x - Speed, transform.position.y);
+        }
     }
 }
