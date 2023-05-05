@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject[] PopUpBG;
-    public GameObject LoadingPanel, ChooseMapPanel, SettingPanel;
+    public GameObject LoadingPanel, ChooseMapPanel, SettingPanel, BGMap1, BGMap2, PlayButtonGo;
+    public Text DeText;
 
-    public int BGRand;
+    public int BGRand, ChooseMapIndex;
     public float LoadingTime;
 
     // Start is called before the first frame update
@@ -17,7 +18,10 @@ public class MenuController : MonoBehaviour
     {
         LoadingTime = 2;
 
+        ChooseMapIndex = 0;
+
         GameController.GameOver = false;
+        GameController.GamePause = false;
 
         BGRand = Random.Range(0, 2);
 
@@ -41,12 +45,47 @@ public class MenuController : MonoBehaviour
             {
                 LoadingPanel.SetActive(false);
             }  
-        }
+        } 
     }
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Map1");
+        ChooseMapPanel.SetActive(true);
+    }
+
+    public void ChooseMap1()
+    {
+        ChooseMapIndex = 1;
+        BGMap1.SetActive(true);
+        BGMap2.SetActive(false);
+        PlayButtonGo.SetActive(true);
+        DeText.text = "A forest full of mysteries, waiting for your discovery!";
+    }
+
+    public void ChooseMap2()
+    {
+        ChooseMapIndex = 2;
+        BGMap1.SetActive(false);
+        BGMap2.SetActive(true);
+        PlayButtonGo.SetActive(true);
+        DeText.text = "A famous capital city of Vietnam with many interesting things awaits!";
+    }
+
+    public void Go()
+    {
+        if (ChooseMapIndex == 1)
+        {
+            SceneManager.LoadScene("Map1");
+        }
+        else if (ChooseMapIndex == 2)
+        {
+            SceneManager.LoadScene("Map2");
+        }
+    }    
+
+    public void CloseChooseMapPanel()
+    {
+        ChooseMapPanel.SetActive(false);
     }
 
     public void OpenSettingPanel()

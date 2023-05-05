@@ -3517,8 +3517,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1904405924}
-        m_TargetAssemblyTypeName: PlayerCat1, Assembly-CSharp
+      - m_Target: {fileID: 1613027138}
+        m_TargetAssemblyTypeName: PlayerCat2, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
         m_Arguments:
@@ -3707,8 +3707,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1904405924}
-          m_TargetAssemblyTypeName: PlayerCat1, Assembly-CSharp
+        - m_Target: {fileID: 1613027138}
+          m_TargetAssemblyTypeName: PlayerCat2, Assembly-CSharp
           m_MethodName: Slide
           m_Mode: 6
           m_Arguments:
@@ -3723,8 +3723,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1904405924}
-          m_TargetAssemblyTypeName: PlayerCat1, Assembly-CSharp
+        - m_Target: {fileID: 1613027138}
+          m_TargetAssemblyTypeName: PlayerCat2, Assembly-CSharp
           m_MethodName: Slide
           m_Mode: 6
           m_Arguments:
@@ -3973,7 +3973,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a13b088f17d36d64092026a68e9e1239, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e9fea1cb066d01449b13b9ded909ec41, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.214
   m_Pitch: 1
@@ -6473,6 +6473,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &699898192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699898193}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &699898193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699898192}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613027136}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713323520
 GameObject:
@@ -10202,7 +10233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156656288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37504a474213d9f419db08823910556f, type: 3}
   m_Name: 
@@ -14028,6 +14059,8 @@ GameObject:
   - component: {fileID: 1613027135}
   - component: {fileID: 1613027134}
   - component: {fileID: 1613027137}
+  - component: {fileID: 1613027138}
+  - component: {fileID: 1613027139}
   m_Layer: 0
   m_Name: PlayerCat2
   m_TagString: Untagged
@@ -14114,7 +14147,8 @@ Transform:
   m_LocalPosition: {x: -5, y: -1.114, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 699898193}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14138,6 +14172,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1613027138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613027133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec0225d8117c4247a519c12dc982e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1613027139}
+  GroundCheck: {fileID: 699898193}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  JumpingPower: 15
+  DoubleJump: 0
+  GetHit: 0
+  Cat2: {fileID: 1613027133}
+  AniCat2: {fileID: 1613027137}
+  IsJump: 0
+  IsSlide: 0
+--- !u!50 &1613027139
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613027133}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 4
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1636996024
 GameObject:
   m_ObjectHideFlags: 0
