@@ -9,7 +9,7 @@ public class PlayerCat1 : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
 
     public float JumpingPower;
-    public bool DoubleJump;
+    public bool DoubleJump, GetHit;
 
     public GameObject Cat1;
     public Animator AniCat1;
@@ -50,7 +50,7 @@ public class PlayerCat1 : MonoBehaviour
             }
         }
 
-        if (IsSlide && IsGrounded() && GameController.GameOver == false && GameController.GamePause == false)
+        if (IsSlide && IsGrounded() && GameController.GameOver == false && GameController.GamePause == false && !GetHit)
         {
             AniCat1.applyRootMotion = false;
             if (once == 0)
@@ -91,5 +91,43 @@ public class PlayerCat1 : MonoBehaviour
     public void Slide(bool _IsSlide)
     {
         IsSlide = _IsSlide;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Score"))
+        {
+            GameController.Score += 10;
+        }
+
+        if (collision.CompareTag("Obs"))
+        {
+            GetHit = true;
+            GameController.PlayTime -= 5;
+            AniCat1.SetTrigger("cat1fall");
+            if (Cat1.transform.position.x <= -5)
+            {
+                Cat1.transform.position = new Vector2(-5, transform.position.y);
+            }
+            StartCoroutine(DelaySlide());
+        }
+
+        if (collision.CompareTag("ObsSlide") && !IsSlide)
+        {
+            GetHit = true;
+            GameController.PlayTime -= 5;
+            AniCat1.SetTrigger("cat1fall");
+            if (Cat1.transform.position.x <= -5)
+            {
+                Cat1.transform.position = new Vector2(-5, transform.position.y);
+            }
+            StartCoroutine(DelaySlide());
+        }
+    }
+
+    IEnumerator DelaySlide()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetHit = false;
     }
 }

@@ -7,7 +7,7 @@ public class BGIns : MonoBehaviour
     public GameObject BGI;
     public Transform root;
 
-    public static bool Ins;
+    public static bool InsBG;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,9 @@ public class BGIns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Ins)
+        if (InsBG)
         {
-            Ins = false;
+            InsBG = false;
 
             Vector3 spawn_pos = new Vector3(22.2f, 0.6502f, 0);
 

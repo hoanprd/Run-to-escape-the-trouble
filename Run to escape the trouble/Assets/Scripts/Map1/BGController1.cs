@@ -21,7 +21,8 @@ public class BGController1 : MonoBehaviour
             if (BG.transform.position.x <= -0.02369976 && once == 0)
             {
                 once = 1;
-                BGIns.Ins = true;
+                BGIns.InsBG = true;
+                BGIns2.InsBG = true;
             }
             if (BG.transform.position.x < -22.45)
             {

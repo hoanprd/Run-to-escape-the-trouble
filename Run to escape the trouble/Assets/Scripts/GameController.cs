@@ -9,14 +9,16 @@ public class GameController : MonoBehaviour
     public GameObject PausePanel;
     public GameObject GameOverPanel;
     public Slider TimeSlider;
+    public Text ScoreText;
 
+    public static int Score;
     public static float PlayTime;
     public static bool GamePause, GameOver;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayTime = 5;
+        PlayTime = 90;
         GameOver = false;
         TimeSlider.maxValue = PlayTime;
         TimeSlider.value = TimeSlider.maxValue;
@@ -35,8 +37,11 @@ public class GameController : MonoBehaviour
             GameOver = true;
         }
 
+        ScoreText.text = "Score: " + Score;
+
         if (GameOver)
         {
+            TimeSlider.value = 0;
             PausePanel.SetActive(false);
             GameOverPanel.SetActive(true);
             StartCoroutine(GoToGameMenu());
