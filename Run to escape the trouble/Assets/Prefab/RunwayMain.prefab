@@ -10541,7 +10541,7 @@ MonoBehaviour:
   RunWay: {fileID: 2043069818674225362}
   once: 0
   Speed: 0.2
-  DestroyTime: 10
+  DestroyTime: 12
 --- !u!1 &2043069818674963270
 GameObject:
   m_ObjectHideFlags: 0

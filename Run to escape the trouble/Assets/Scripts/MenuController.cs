@@ -7,16 +7,19 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject[] PopUpBG;
+    public AudioSource[] BGMSound, FXSound;
     public GameObject LoadingPanel, ChooseMapPanel, SettingPanel, BGMap1, BGMap2, PlayButtonGo;
     public Text DeText;
 
-    public int BGRand, ChooseMapIndex;
+    public int BGRand, ChooseMapIndex, once;
     public float LoadingTime;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadingTime = 2;
+
+        once = 0;
 
         ChooseMapIndex = 0;
 
@@ -43,8 +46,18 @@ public class MenuController : MonoBehaviour
 
             if (LoadingTime <= 0)
             {
+                if (once == 0)
+                {
+                    once = 1;
+
+                    for (int i = 0; i < BGMSound.Length; i++)
+                    {
+                        BGMSound[i].Play();
+                    }
+                }
+
                 LoadingPanel.SetActive(false);
-            }  
+            }
         } 
     }
 
@@ -85,6 +98,11 @@ public class MenuController : MonoBehaviour
 
     public void CloseChooseMapPanel()
     {
+        ChooseMapIndex = 0;
+        BGMap1.SetActive(false);
+        BGMap2.SetActive(false);
+        PlayButtonGo.SetActive(false);
+        DeText.text = "???";
         ChooseMapPanel.SetActive(false);
     }
 
