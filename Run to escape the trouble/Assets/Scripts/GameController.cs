@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject[] EffectStatusDisplay;
+    public GameObject ShieldDisplay, FreezeDisplay;
     public GameObject PausePanel;
     public GameObject GameOverPanel;
     public Slider TimeSlider;

@@ -8,6 +8,10 @@ TagManager:
   - Obs
   - ObsSlide
   - Score
+  - Shield
+  - Freeze
+  - PlusTime
+  - ScoreS
   layers:
   - Default
   - TransparentFX
