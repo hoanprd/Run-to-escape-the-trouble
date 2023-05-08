@@ -102,26 +102,40 @@ public class PlayerCat2 : MonoBehaviour
 
         if (collision.CompareTag("Obs"))
         {
-            GetHit = true;
-            GameController.PlayTime -= 5;
-            AniCat2.SetTrigger("cat2fall");
-            if (Cat2.transform.position.x <= -5)
+            if (GameController.ShieldActive)
             {
-                Cat2.transform.position = new Vector2(-5, transform.position.y);
+                GameController.ShieldActive = false;
             }
-            StartCoroutine(DelaySlide());
+            else
+            {
+                GetHit = true;
+                GameController.PlayTime -= 5;
+                AniCat2.SetTrigger("cat2fall");
+                if (Cat2.transform.position.x <= -5)
+                {
+                    Cat2.transform.position = new Vector2(-5, transform.position.y);
+                }
+                StartCoroutine(DelaySlide());
+            }
         }
 
         if (collision.CompareTag("ObsSlide") && !IsSlide)
         {
-            GetHit = true;
-            GameController.PlayTime -= 5;
-            AniCat2.SetTrigger("cat2fall");
-            if (Cat2.transform.position.x <= -5)
+            if (GameController.ShieldActive)
             {
-                Cat2.transform.position = new Vector2(-5, transform.position.y);
+                GameController.ShieldActive = false;
             }
-            StartCoroutine(DelaySlide());
+            else
+            {
+                GetHit = true;
+                GameController.PlayTime -= 5;
+                AniCat2.SetTrigger("cat2fall");
+                if (Cat2.transform.position.x <= -5)
+                {
+                    Cat2.transform.position = new Vector2(-5, transform.position.y);
+                }
+                StartCoroutine(DelaySlide());
+            }
         }
     }
 
