@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public Image EffectShieldDisplay, EffectFreezeDisplay, EffectPlusTimeDisplay;
-    public GameObject ShieldDisplay, FreezeDisplay;
+    public GameObject GetHitDisplay, ShieldDisplay, FreezeDisplay;
     public GameObject PausePanel;
     public GameObject GameOverPanel;
     public Slider TimeSlider;
@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     public static int Score;
     public static float PlayTime, FreezeCD;
-    public static bool GamePause, GameOver, ShieldActive, FreezeActive, PlusTimeActive;
+    public static bool GamePause, GameOver, GetHitStatus, ShieldActive, FreezeActive, PlusTimeActive;
 
     // Start is called before the first frame update
     void Start()
@@ -107,6 +107,13 @@ public class GameController : MonoBehaviour
             EffectPlusTimeDisplay.color = new Color(EffectPlusTimeDisplay.color.r, EffectPlusTimeDisplay.color.g, EffectPlusTimeDisplay.color.b, 0.4f);
         }
 
+        if (GetHitStatus)
+        {
+            GetHitStatus = false;
+            GetHitDisplay.SetActive(true);
+            StartCoroutine(GetHitDisplayOff());
+        }    
+
         if (GameOver)
         {
             TimeSlider.value = 0;
@@ -131,6 +138,12 @@ public class GameController : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    IEnumerator GetHitDisplayOff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetHitDisplay.SetActive(false);
     }
 
     IEnumerator GoToGameMenu()

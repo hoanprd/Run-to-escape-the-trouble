@@ -109,6 +109,13 @@ public class PlayerCat1 : MonoBehaviour
             else
             {
                 GetHit = true;
+
+                if (!ChaserRatController.IsChasing)
+                {
+                    ChaserRatController.ChaseTrigger += 1;
+                }
+
+                GameController.GetHitStatus = true;
                 GameController.PlayTime -= 5;
                 AniCat1.SetTrigger("cat1fall");
                 if (Cat1.transform.position.x <= -5)
@@ -128,6 +135,13 @@ public class PlayerCat1 : MonoBehaviour
             else
             {
                 GetHit = true;
+
+                if (!ChaserRatController.IsChasing)
+                {
+                    ChaserRatController.ChaseTrigger += 1;
+                }
+
+                GameController.GetHitStatus = true;
                 GameController.PlayTime -= 5;
                 AniCat1.SetTrigger("cat1fall");
                 if (Cat1.transform.position.x <= -5)
