@@ -25,6 +25,11 @@ public class PlayerCat1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Cat1.transform.position.x <= -4)
+        {
+            Cat1.transform.position = new Vector2(-4, transform.position.y);
+        }
+
         if (IsGrounded() && !IsJump && GameController.GameOver == false && GameController.GamePause == false)
         {
             DoubleJump = false;
@@ -118,10 +123,6 @@ public class PlayerCat1 : MonoBehaviour
                 GameController.GetHitStatus = true;
                 GameController.PlayTime -= 5;
                 AniCat1.SetTrigger("cat1fall");
-                if (Cat1.transform.position.x <= -5)
-                {
-                    Cat1.transform.position = new Vector2(-5, transform.position.y);
-                }
                 StartCoroutine(DelaySlide());
             }  
         }
@@ -144,10 +145,6 @@ public class PlayerCat1 : MonoBehaviour
                 GameController.GetHitStatus = true;
                 GameController.PlayTime -= 5;
                 AniCat1.SetTrigger("cat1fall");
-                if (Cat1.transform.position.x <= -5)
-                {
-                    Cat1.transform.position = new Vector2(-5, transform.position.y);
-                }
                 StartCoroutine(DelaySlide());
             }
         }

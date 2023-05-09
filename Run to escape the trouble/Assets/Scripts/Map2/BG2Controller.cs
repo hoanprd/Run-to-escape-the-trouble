@@ -6,6 +6,8 @@ public class BG2Controller : MonoBehaviour
 {
     public GameObject BG;
 
+    public int once;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +19,19 @@ public class BG2Controller : MonoBehaviour
     {
         if (GameController.GameOver == false && GameController.GamePause == false)
         {
-            if (BG.transform.position.x < -22.45)
+            if (BG.transform.position.x < -36.296)
             {
                 Destroy(gameObject);
             }
 
             BG.transform.position = new Vector2(transform.position.x - Time.deltaTime, transform.position.y);
+        }
+
+        if (BG.transform.position.x <= -4.796 && once == 0)
+        {
+            once = 1;
+            BGIns.InsBG = true;
+            BGIns2.InsBG = true;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapItemIns : MonoBehaviour
 {
-    public GameObject NormalCoinD, NormalCoin2D, SpecialCoinD, ShieldD, FreezeD, PlusTimerD, NormalCoinM, NormalCoin2M, SpecialCoinM, ShieldM, FreezeM, PlusTimerM;
+    public GameObject NormalCoinD, NormalCoin2D, SpecialCoinD, SpecialCoin2D, ShieldD, FreezeD, PlusTimerD, NormalCoinM, NormalCoin2M, SpecialCoinM, SpecialCoin2M, ShieldM, FreezeM, PlusTimerM;
 
     public int ObsDownMidRand, ObsDownRand, ObsMidRand;
 
@@ -25,9 +25,13 @@ public class MapItemIns : MonoBehaviour
             {
                 NormalCoin2D.SetActive(true);
             }
-            else if (ObsDownRand > 5 && ObsDownRand <= 7)
+            else if (ObsDownRand == 6)
             {
                 SpecialCoinD.SetActive(true);
+            }
+            else if (ObsDownRand == 7)
+            {
+                SpecialCoin2D.SetActive(true);
             }
             else if (ObsDownRand == 8)
             {
@@ -54,9 +58,13 @@ public class MapItemIns : MonoBehaviour
             {
                 NormalCoin2M.SetActive(true);
             }
-            else if (ObsMidRand > 5 && ObsDownRand <= 7)
+            else if (ObsMidRand == 6)
             {
                 SpecialCoinM.SetActive(true);
+            }
+            else if (ObsMidRand == 7)
+            {
+                SpecialCoin2M.SetActive(true);
             }
             else if (ObsMidRand == 8)
             {

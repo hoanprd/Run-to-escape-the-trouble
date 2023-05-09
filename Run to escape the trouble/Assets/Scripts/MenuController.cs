@@ -26,7 +26,7 @@ public class MenuController : MonoBehaviour
         GameController.GameOver = false;
         GameController.GamePause = false;
 
-        BGRand = Random.Range(0, 2);
+        /*BGRand = Random.Range(0, 2);
 
         for (int i = 0; i < PopUpBG.Length; i++)
         {
@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
             {
                 PopUpBG[i].SetActive(true);
             }
-        }
+        }*/
     }
 
     // Update is called once per frame

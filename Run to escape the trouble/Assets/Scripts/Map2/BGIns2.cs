@@ -12,7 +12,7 @@ public class BGIns2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InsBG = false;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class BGIns2 : MonoBehaviour
         {
             InsBG = false;
 
-            Vector3 spawn_pos = new Vector3(22.1f, 0.6637f, 0);
+            Vector3 spawn_pos = new Vector3(33.454f, 2.027f, 0);
 
             Instantiate(BGI, spawn_pos, Quaternion.identity, root);
         }
