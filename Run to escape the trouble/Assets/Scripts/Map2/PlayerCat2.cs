@@ -13,6 +13,8 @@ public class PlayerCat2 : MonoBehaviour
 
     public GameObject Cat2;
     public Animator AniCat2;
+    public AudioSource JumpSound, SlideSound, HitSound;
+
     public bool IsJump, IsSlide;
     private int once;
 
@@ -61,11 +63,13 @@ public class PlayerCat2 : MonoBehaviour
             if (once == 0)
             {
                 once = 1;
+                SlideSound.Play();
                 AniCat2.SetBool("cat2slide", true);
             }
         }
         else if (GameController.GameOver == false && GameController.GamePause == false)
         {
+            SlideSound.Stop();
             AniCat2.applyRootMotion = true;
             once = 0;
             AniCat2.SetBool("cat2slide", false);
@@ -91,6 +95,7 @@ public class PlayerCat2 : MonoBehaviour
     public void Jump()
     {
         IsJump = true;
+        JumpSound.Play();
     }
 
     public void Slide(bool _IsSlide)
@@ -115,6 +120,8 @@ public class PlayerCat2 : MonoBehaviour
             {
                 GetHit = true;
 
+                HitSound.Play();
+
                 if (!ChaserRatController.IsChasing)
                 {
                     ChaserRatController.ChaseTrigger += 1;
@@ -136,6 +143,8 @@ public class PlayerCat2 : MonoBehaviour
             else
             {
                 GetHit = true;
+
+                HitSound.Play();
 
                 if (!ChaserRatController.IsChasing)
                 {
